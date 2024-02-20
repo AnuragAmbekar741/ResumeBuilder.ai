@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { MdRocketLaunch } from "react-icons/md";
 
-const LandingPage = () => {
+const Pov: React.FC = () => {
   return (
     <div className="grid justify-center w-full px-10">
       <div className="px-40 my-40 text-center">
@@ -22,4 +22,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default Pov;
