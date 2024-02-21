@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
         <Button
           variant="outlined"
           className="px-3 py-2 text-sm font-medium transition delay-150 scale-110 border-black rounded-2xl text-slate-900 w-28 hover:bg-black hover:text-white"
-          onClick={() => dispatch(toggleSigninForm())}
+          onClick={() => dispatch(toggleSigninForm(true))}
         >
           LOGIN
         </Button>

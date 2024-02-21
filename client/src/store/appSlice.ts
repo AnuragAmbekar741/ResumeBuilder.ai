@@ -8,8 +8,8 @@ const appSlice = createSlice({
     isSigninSignup: false
     } as AppState,
     reducers : {
-        toggleSigninForm: (state) => {
-            state.isSigninSignup = !state.isSigninSignup
+        toggleSigninForm: (state,action) => {
+            state.isSigninSignup = action.payload
         }
     }
 })
