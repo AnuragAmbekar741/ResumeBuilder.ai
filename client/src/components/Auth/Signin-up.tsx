@@ -5,6 +5,7 @@ import {
   Typography,
   Checkbox,
 } from "@mui/material";
+import { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 
 const style = {
@@ -23,8 +24,11 @@ const style = {
 };
 
 const Signin = () => {
+  const [signUp, setSignUp] = useState(false);
   return (
-    <div className="w-full p-10 mt-28 border rounded-lg h-[550px] bg-white  border-[#FFD800] ">
+    <div
+      className={`w-full h-[575px] mt-28 p-10  border-[1.25px] rounded-lg bg-white  border-[#FFD800]`}
+    >
       <h1 className="mb-6 text-4xl font-light tracking-wide text-center">
         Build and Conquer
       </h1>
@@ -47,12 +51,23 @@ const Signin = () => {
           size="medium"
           sx={style}
         />
+        {signUp && (
+          <TextField
+            id="standard-basic"
+            label="Confirm Password"
+            variant="outlined"
+            className="w-[320px] my-2"
+            InputLabelProps={{ style: { color: "black" } }}
+            size="medium"
+            sx={style}
+          />
+        )}
         <div className="flex justify-end py-2 pr-4">
           <Checkbox
             className="hover:bg-[#FFD800]/20"
             style={{ color: "#FFD800" }}
           />
-          <Typography className="mt-[0.6rem] text-md">Remeber me?</Typography>
+          <Typography className="mt-[0.6rem] text-md">Remember me?</Typography>
         </div>
         <Button
           variant="outlined"
@@ -71,23 +86,16 @@ const Signin = () => {
           <FaGoogle className="mr-5 text-xl" />
           Login with Google
         </Button>
-        <Button
-          className="py-3 mt-5 text-lg bg-[#FFD800] hover:bg-white rounded-2xl"
-          color="inherit"
-          sx={{
-            textTransform: "none",
-            "&:hover": {
-              backgroundColor: "white",
-              border: "1px solid #FFD800",
-            },
-            "&:focus": {
-              border: "1rem solid #FFD800",
-              outline: "none",
-            },
-          }}
-        >
-          Create an account
-        </Button>
+        {!signUp && (
+          <Button
+            className="py-3 mt-5 text-lg bg-[#FFD800]  rounded-2xl"
+            color="inherit"
+            sx={{ textTransform: "none" }}
+            onClick={() => setSignUp(!signUp)}
+          >
+            Create an account
+          </Button>
+        )}
       </FormControl>
     </div>
   );
