@@ -6,11 +6,16 @@ export const Header: React.FC = () => {
   const dispatch = useDispatch();
 
   return (
-    <div className="absolute top-0 flex justify-between w-full p-5 shadow-md">
+    <div className="absolute top-0 flex justify-between w-full px-10 py-5 shadow-md">
       <div>
         <h1 className="text-2xl font-bold tracking-tight transition delay-100 hover:scale-110">
-          Free Resume !
+          Free Resume Download !
         </h1>
+      </div>
+      <div>
+        {/* <h1 className="mt-1 text-xl">
+          If you dont about data, continue without login 🙂
+        </h1> */}
       </div>
       <div>
         <Button

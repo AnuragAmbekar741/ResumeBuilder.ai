@@ -8,26 +8,15 @@ import {
 import { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 
-const style = {
-  "& label.Mui-focused": {
-    color: "black",
-  },
-  "& .MuiOutlinedInput-root": {
-    "&.Mui-focused fieldset": {
-      borderColor: "black",
-    },
-    "& fieldset": {
-      borderColor: "black",
-      borderRadius: 4,
-    },
-  },
-};
+import { style } from "./Styles";
 
 const Signin = () => {
   const [signUp, setSignUp] = useState(false);
   return (
     <div
-      className={`w-full h-[575px] mt-28 p-10  border-[1.25px] rounded-lg bg-white  border-[#FFD800]`}
+      className={`w-full h-[575px] mt-24 p-10  border-[1.25px] rounded-lg bg-white  border-[#FFD800] ${
+        signUp ? "scale-105 delay-150 transition " : ""
+      }`}
     >
       <h1 className="mb-6 text-4xl font-light tracking-wide text-center">
         Build and Conquer
