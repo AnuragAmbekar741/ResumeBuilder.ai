@@ -15,7 +15,11 @@ export default {
       wider: '.05em',
       widest: '.1em',
     },
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#FFD800',
+      },
+    },
   },
   plugins: [],
 }

@@ -14,12 +14,12 @@ const Signin = () => {
   const [signUp, setSignUp] = useState(false);
   return (
     <div
-      className={`w-full h-[575px] mt-24 p-10  border-[1.25px] rounded-lg bg-white  border-[#FFD800] ${
-        signUp ? "scale-105 delay-150 transition " : ""
-      }`}
+      className={`w-full ${
+        signUp ? "h-[620px] mt-20" : "h-[555px] mt-24"
+      }  p-10  border-[1.25px] rounded-lg bg-white  border-primary`}
     >
       <h1 className="mb-6 text-4xl font-light tracking-wide text-center">
-        Build and Conquer
+        Build and Conquer !
       </h1>
       <FormControl>
         <TextField
@@ -53,8 +53,8 @@ const Signin = () => {
         )}
         <div className="flex justify-end py-2 pr-4">
           <Checkbox
-            className="hover:bg-[#FFD800]/20"
-            style={{ color: "#FFD800" }}
+            className="hover:bg-primary/20"
+            style={{ color: "primary" }}
           />
           <Typography className="mt-[0.6rem] text-md">Remember me?</Typography>
         </div>
@@ -64,7 +64,7 @@ const Signin = () => {
           color="inherit"
           sx={{ textTransform: "none" }}
         >
-          Login
+          {signUp ? "Create Account" : "Login"}
         </Button>
         <Button
           variant="outlined"
@@ -73,18 +73,16 @@ const Signin = () => {
           sx={{ textTransform: "none" }}
         >
           <FaGoogle className="mr-5 text-xl" />
-          Login with Google
+          {signUp ? "Create with Google" : "Login with Google"}
         </Button>
-        {!signUp && (
-          <Button
-            className="py-3 mt-5 text-lg bg-[#FFD800]  rounded-2xl"
-            color="inherit"
-            sx={{ textTransform: "none" }}
-            onClick={() => setSignUp(!signUp)}
-          >
-            Create an account
-          </Button>
-        )}
+        <Button
+          className="py-3 mt-5 text-lg bg-primary rounded-2xl"
+          color="inherit"
+          sx={{ textTransform: "none" }}
+          onClick={() => setSignUp(!signUp)}
+        >
+          {signUp ? "Login into Account" : "Create an Account"}
+        </Button>
       </FormControl>
     </div>
   );

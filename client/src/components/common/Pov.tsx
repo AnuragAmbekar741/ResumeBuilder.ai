@@ -24,7 +24,7 @@ const Pov: React.FC = () => {
           variant="outlined"
           className={`${
             isSignInOpen ? "w-[325px]" : "w-1/3"
-          } w-1/3 py-5 my-10 text-4xl tracking-wide text-black bg-[#ffd900] border-none shadow-md rounded-3xl hover:bg-[#FFD800] hover:text-slate-50 group`}
+          } w-1/3 py-5 my-10 text-4xl tracking-wide text-black bg-primary border-none shadow-md rounded-3xl hover:bg-[#FFD800] hover:text-slate-50 group`}
           sx={{ textTransform: "none" }}
         >
           Get Started
