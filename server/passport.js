@@ -1,18 +1,24 @@
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const passport = require("passport");
 
-passport.use(new GoogleStrategy({
-    clientID: process.env.GOOGLE_CLIENT_ID,
-    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://localhost:3000/auth/google/callback"
-},
-    function (accessToken, refreshToken, profile, cb) {
-        // Here you can find the user profile information
-        console.log(profile);
+passport.use(
+	new GoogleStrategy(
+		{
+			clientID: process.env.GOOGLE_CLIENT_ID,
+			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+			callbackURL: "/auth/google/callback",
+			scope: ["profile", "email"],
+		},
+		function (accessToken, refreshToken, profile, callback) {
+			callback(null, profile);
+		}
+	)
+);
 
-        // Find or create a user in your database and return
-        return cb(null, profile);
-    }
-));
+passport.serializeUser((user, done) => {
+	done(null, user);
+});
 
-app.use(passport.initialize());
+passport.deserializeUser((user, done) => {
+	done(null, user);
+});
