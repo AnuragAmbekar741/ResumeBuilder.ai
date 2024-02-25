@@ -5,9 +5,8 @@ import {
   Typography,
   Checkbox,
 } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import axios from "axios";
 import { style } from "./Styles";
 
 const Signin = () => {
@@ -15,19 +14,6 @@ const Signin = () => {
   const googleAuth = () => {
     window.open(`http://localhost:8080/auth/google/`, "_self");
   };
-  const getUser = async () => {
-    console.log("effect called");
-    try {
-      const url = `http://localhost:8080/auth/login/success`;
-      const { data } = await axios.get(url, { withCredentials: true });
-      console.log(data.user._json);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  useEffect(() => {
-    getUser();
-  }, []);
   return (
     <div
       className={`w-full ${
