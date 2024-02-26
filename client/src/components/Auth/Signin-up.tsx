@@ -18,7 +18,7 @@ const Signin = () => {
     <div
       className={`w-full ${
         signUp ? "h-[620px] mt-20" : "h-[555px] mt-24"
-      }  p-10  border-[1.25px] rounded-lg bg-white  border-primary`}
+      }  p-10  border-[1.75px] rounded-lg bg-white  border-primary`}
     >
       <h1 className="mb-6 text-4xl font-light tracking-wide text-center">
         Build and Conquer !
@@ -76,7 +76,7 @@ const Signin = () => {
           onClick={googleAuth}
         >
           <FaGoogle className="mr-5 text-xl" />
-          {signUp ? "Create with Google" : "Login with Google"}
+          Continue with Google
         </Button>
         <Button
           className="py-3 mt-5 text-lg bg-primary rounded-2xl"
