@@ -8,8 +8,8 @@ export const Header: React.FC = () => {
   const dispatch = useDispatch();
   const user = useSelector((state: { user: UserState }) => state.user.user);
   console.log(user);
-  const logout = async () => {
-    await fetch("http://localhost:8080/auth/logout/");
+  const logout = () => {
+    window.open(`http://localhost:8080/auth/logout`, "_self");
   };
 
   return (
@@ -27,10 +27,9 @@ export const Header: React.FC = () => {
         <Button
           variant="outlined"
           className="px-3 py-2 text-sm font-medium transition delay-150 scale-110 border-black rounded-xl text-slate-900 w-28 hover:bg-black hover:text-white"
-          onClick={() => {
-            dispatch(toggleSigninForm(true));
-            logout();
-          }}
+          onClick={() =>
+            user.name === "" ? dispatch(toggleSigninForm(true)) : logout()
+          }
           sx={{ textTransform: "none" }}
         >
           {user.name !== "" ? "Logout" : "Login"}
