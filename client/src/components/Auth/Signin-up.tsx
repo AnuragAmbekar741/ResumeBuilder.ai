@@ -79,7 +79,7 @@ const Signin = () => {
           Continue with Google
         </Button>
         <Button
-          className="py-3 mt-5 text-lg bg-primary rounded-2xl"
+          className="py-3 mt-5 text-lg bg-primary rounded-2xl hover:text-white"
           color="inherit"
           sx={{ textTransform: "none" }}
           onClick={() => setSignUp(!signUp)}
