@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { AppState } from "../types/appState"
+import { AppState } from "../types/types"
 
 
 const appSlice = createSlice({
     name:'app',
     initialState: {
-    isSigninSignup: false
+    isSigninSignup: false 
     } as AppState,
     reducers : {
         toggleSigninForm: (state,action) => {

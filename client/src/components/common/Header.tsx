@@ -1,10 +1,16 @@
 import { Button } from "@mui/material";
 import { BiDownload } from "react-icons/bi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleSigninForm } from "../../store/appSlice";
+import { UserState } from "../../types/types";
 
 export const Header: React.FC = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state: { user: UserState }) => state.user.user);
+  console.log(user);
+  const logout = async () => {
+    await fetch("http://localhost:8080/auth/logout/");
+  };
 
   return (
     <div className="absolute top-0 flex justify-between w-full px-10 py-5 shadow-md">
@@ -21,9 +27,13 @@ export const Header: React.FC = () => {
         <Button
           variant="outlined"
           className="px-3 py-2 text-sm font-medium transition delay-150 scale-110 border-black rounded-xl text-slate-900 w-28 hover:bg-black hover:text-white"
-          onClick={() => dispatch(toggleSigninForm(true))}
+          onClick={() => {
+            dispatch(toggleSigninForm(true));
+            logout();
+          }}
+          sx={{ textTransform: "none" }}
         >
-          LOGIN
+          {user.name !== "" ? "Logout" : "Login"}
         </Button>
       </div>
     </div>

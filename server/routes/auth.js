@@ -33,6 +33,7 @@ router.get(
 
 router.get("/logout", (req, res) => {
 	req.logout();
+	console.log(res.redirect(process.env.CLIENT_URL))
 	res.redirect(process.env.CLIENT_URL);
 });
 

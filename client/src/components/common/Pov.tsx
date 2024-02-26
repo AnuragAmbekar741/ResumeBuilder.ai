@@ -1,12 +1,12 @@
 import { Button } from "@mui/material";
 import { MdRocketLaunch } from "react-icons/md";
 import { useSelector } from "react-redux";
-import { RootState } from "../../types/appState";
+import { AppState } from "../../types/types";
 import Signin from "../Auth/Signin-up";
 
 const Pov: React.FC = () => {
   const isSignInOpen = useSelector(
-    (store: RootState) => store.app.isSigninSignup
+    (state: { app: AppState }) => state.app.isSigninSignup
   );
   console.log(isSignInOpen);
   return (
