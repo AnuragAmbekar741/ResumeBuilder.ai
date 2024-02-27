@@ -9,6 +9,7 @@ import { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { style } from "./Styles";
 import { useForm, SubmitHandler } from "react-hook-form";
+import axios from "axios";
 
 interface FormData {
   email: string;
@@ -26,7 +27,19 @@ const Signin = () => {
     watch,
   } = useForm<FormData>();
 
-  const onSubmit: SubmitHandler<FormData> = (data) => console.log(data);
+  // const onSubmit: SubmitHandler<FormData> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<FormData> = async (data) => {
+    try {
+      // Make Axios POST call with form data
+      const response = await axios.post(
+        "http://localhost:8080/user/signup",
+        data
+      );
+      console.log("Response:", response.data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   return (
     <div

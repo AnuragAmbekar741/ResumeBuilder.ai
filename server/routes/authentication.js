@@ -19,3 +19,5 @@ router.post("/signup", async (req, resp) => {
         resp.json({ message: "User created successfully", token })
     }
 })
+
+module.exports = router
