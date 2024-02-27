@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import Router from "./routes/router";
 import { Provider } from "react-redux";
 import store from "./store/store";
+import { Toaster } from "react-hot-toast";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
             <Router />
           </div>
         </BrowserRouter>
+        <Toaster />
       </Provider>
     </>
   );

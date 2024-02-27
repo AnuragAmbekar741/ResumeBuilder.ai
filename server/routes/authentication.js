@@ -20,4 +20,14 @@ router.post("/signup", async (req, resp) => {
     }
 })
 
+router.post("/login", async (req, resp) => {
+    const { email, password } = req.body
+    const validUser = await User.findOne({ email: email, password: password })
+    if (validUser) {
+        const token = jwt.sign({ email, role: 'User' }, SECRET_KEY, { expiresIn: '1h' })
+        return resp.json({ message: "Login successfull", token })
+    }
+    if (!validUser) return resp.json({ message: "Invalid username or password" })
+})
+
 module.exports = router

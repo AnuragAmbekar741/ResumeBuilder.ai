@@ -4,12 +4,16 @@ import {
   FormControl,
   Typography,
   Checkbox,
+  Backdrop,
+  CircularProgress,
 } from "@mui/material";
 import { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { style } from "./Styles";
 import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 interface FormData {
   email: string;
@@ -19,7 +23,7 @@ interface FormData {
 
 const Signin = () => {
   const [signUp, setSignUp] = useState(false);
-
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -27,15 +31,27 @@ const Signin = () => {
     watch,
   } = useForm<FormData>();
 
-  // const onSubmit: SubmitHandler<FormData> = (data) => console.log(data);
+  const navigate = useNavigate();
+
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
-      // Make Axios POST call with form data
+      setLoading(true);
+      const params = signUp ? "signup" : "login";
       const response = await axios.post(
-        "http://localhost:8080/user/signup",
+        `http://localhost:8080/user/${params}`,
         data
       );
       console.log("Response:", response.data);
+      if (response.data.token) {
+        setLoading(false);
+        toast.success(response.data.message);
+        navigate("/home");
+        localStorage.setItem("token", response.data.token);
+      }
+      if (!response.data.token) {
+        toast.error(response.data.message);
+        setLoading(false);
+      }
     } catch (error) {
       console.error("Error:", error);
     }
@@ -168,6 +184,14 @@ const Signin = () => {
           </Button>
         </form>
       </FormControl>
+      {loading && (
+        <Backdrop
+          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+          open
+        >
+          <CircularProgress color="inherit" />
+        </Backdrop>
+      )}
     </div>
   );
 };
