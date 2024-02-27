@@ -6,7 +6,7 @@ const userSchema = mongoose.Schema({
     googleAuthStatus: { type: Boolean, default: false }
 })
 
-const USER = mongoose.model("User", userSchema)
+const User = mongoose.model("User", userSchema)
 
 
-module.exports = { USER }
+module.exports = { User }

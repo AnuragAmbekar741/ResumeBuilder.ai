@@ -10,5 +10,8 @@ export const style = {
       borderColor: "black",
       borderRadius: 4,
     },
+    "&.MuiFormHelperText-root.Mui-error": {
+    color: "red",
+    },
   },
 };
