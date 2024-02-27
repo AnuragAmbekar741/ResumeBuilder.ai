@@ -60,7 +60,7 @@ const Signin = () => {
   return (
     <div
       className={`w-full ${
-        signUp ? "h-[680px] mt-8" : "h-[595px] mt-24"
+        signUp ? "h-[675px] mt-8" : "h-[595px] mt-24"
       }  p-10  border-[1.75px] rounded-lg bg-white  border-primary`}
     >
       <h1 className="mb-6 text-4xl font-light tracking-wide text-center">
@@ -143,10 +143,7 @@ const Signin = () => {
             />
           )}
           <div className="flex justify-end py-2 pr-4">
-            <Checkbox
-              className="hover:bg-primary/20"
-              style={{ color: "primary" }}
-            />
+            <Checkbox className="hover:bg-primary/20 text-primary" />
             <Typography className="mt-[0.6rem] text-md">
               Remember me?
             </Typography>

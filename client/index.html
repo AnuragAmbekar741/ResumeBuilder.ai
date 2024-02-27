@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+  <link rel="icon" type="image/png" sizes="20x20" id="favicon" href="./src/assets/downloadIconBlack.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resume.ai</title>
 </head>
@@ -12,5 +12,28 @@
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
+<script>
+  // Define the favicon URLs
+  const favicon1 = './src/assets/downloadIconBlack.png';
+  const favicon2 = './src/assets/downloadIconWhite.png';
+
+  // Function to change the favicon
+  function changeFavicon(iconUrl) {
+    const favicon = document.getElementById('favicon');
+    if (favicon) {
+      favicon.href = iconUrl;
+    }
+  }
+
+  // Event listener for window focus
+  window.addEventListener('focus', () => {
+    changeFavicon(favicon1);
+  });
+
+  // Event listener for window blur
+  window.addEventListener('blur', () => {
+    changeFavicon(favicon2);
+  });
+</script>
 
 </html>
