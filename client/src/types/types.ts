@@ -4,9 +4,8 @@ export interface AppState {
 
 export interface UserState {
   user:{
-    name: string;
     email: string;
-    picture: string | null;
+    token: string;
   } 
 }
 

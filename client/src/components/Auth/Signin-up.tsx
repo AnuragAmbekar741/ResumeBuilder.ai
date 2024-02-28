@@ -14,6 +14,8 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { isUser } from "../../redux/slice/userSlice";
 
 interface FormData {
   email: string;
@@ -32,7 +34,7 @@ const Signin = () => {
   } = useForm<FormData>();
 
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
       setLoading(true);
@@ -47,6 +49,8 @@ const Signin = () => {
         toast.success(response.data.message);
         navigate("/home");
         localStorage.setItem("token", response.data.token);
+        const loggedUser = { email: data.email, token: response.data.token };
+        dispatch(isUser(loggedUser));
       }
       if (!response.data.token) {
         toast.error(response.data.message);
@@ -60,7 +64,7 @@ const Signin = () => {
   return (
     <div
       className={`w-full ${
-        signUp ? "h-[675px] mt-8" : "h-[595px] mt-24"
+        signUp ? "h-[675px] mt-8" : "h-[595px] mt-20"
       }  p-10  border-[1.75px] rounded-lg bg-white  border-primary`}
     >
       <h1 className="mb-6 text-4xl font-light tracking-wide text-center">

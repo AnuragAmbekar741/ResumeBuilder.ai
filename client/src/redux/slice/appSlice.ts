@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { AppState } from "../types/types"
+import { AppState } from "../../types/types"
 
 
 const appSlice = createSlice({

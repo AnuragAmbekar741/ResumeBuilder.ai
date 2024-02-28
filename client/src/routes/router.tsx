@@ -1,13 +1,20 @@
-import { Route, Routes } from "react-router-dom";
-import { routerType } from "../types/router";
-import pagesData from "./routes-data";
+import { Navigate, Route, Routes } from "react-router-dom";
+import LandingPage from "../pages/LandingPage";
+import Home from "../components/common/Home";
+import { useSelector } from "react-redux";
+import { UserState } from "../types/types";
 
 const Router = () => {
-  const pageRoutes = pagesData.map(({ path, title, element }: routerType) => {
-    return <Route key={title} path={`/${path}`} element={element} />;
-  });
-
-  return <Routes>{pageRoutes}</Routes>;
+  const token = useSelector(
+    (store: { user: UserState }) => store.user.user.token
+  );
+  console.log(token);
+  return (
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/home" element={token ? <Home /> : <Navigate to={"/"} />} />
+    </Routes>
+  );
 };
 
 export default Router;

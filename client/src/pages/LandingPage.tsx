@@ -1,5 +1,5 @@
 import Pov from "../components/common/Pov";
-
+localStorage.setItem("token", "");
 const LandingPage = () => {
   return (
     <div>
