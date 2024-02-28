@@ -10,6 +10,10 @@ export const Header: React.FC = () => {
   const token = useSelector(
     (store: { user: UserState }) => store.user.user.token
   );
+  const logout = () => {
+    localStorage.removeItem("token");
+    dispatch(toggleSigninForm(true));
+  };
   return (
     <div className="absolute top-0 flex justify-between w-full px-10 py-5 shadow-md">
       <div className="flex transition delay-100 hover:scale-110">
@@ -25,9 +29,7 @@ export const Header: React.FC = () => {
         <Button
           variant="outlined"
           className="px-3 py-2 text-sm font-medium transition delay-150 scale-110 border-black rounded-xl text-slate-900 w-28 hover:bg-black hover:text-white"
-          onClick={() =>
-            token ? dispatch(noUser()) : dispatch(toggleSigninForm(true))
-          }
+          onClick={() => (token ? dispatch(noUser()) : logout())}
           sx={{ textTransform: "none" }}
         >
           {token ? "Logout" : "Login"}
