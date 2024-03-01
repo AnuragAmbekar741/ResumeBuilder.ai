@@ -1,18 +1,19 @@
 import { Button } from "@mui/material";
 import { BiDownload } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { noUser } from "../../redux/slice/userSlice";
 import { toggleSigninForm } from "../../redux/slice/appSlice";
 import { UserState } from "../../types/types";
+import { noUser } from "../../redux/slice/userSlice";
 
 export const Header: React.FC = () => {
   const dispatch = useDispatch();
-  const token = useSelector(
-    (store: { user: UserState }) => store.user.user.token
-  );
+  const user = useSelector((store: { user: UserState }) => store.user.user);
+
+  const TOKEN = user.token ? user.token : localStorage.getItem("token");
+
   const logout = () => {
     localStorage.removeItem("token");
-    dispatch(toggleSigninForm(true));
+    dispatch(noUser());
   };
   return (
     <div className="absolute top-0 flex justify-between w-full px-10 py-5 shadow-md">
@@ -29,10 +30,10 @@ export const Header: React.FC = () => {
         <Button
           variant="outlined"
           className="px-3 py-2 text-sm font-medium transition delay-150 scale-110 border-black rounded-xl text-slate-900 w-28 hover:bg-black hover:text-white"
-          onClick={() => (token ? dispatch(noUser()) : logout())}
+          onClick={() => (TOKEN ? logout() : dispatch(toggleSigninForm(true)))}
           sx={{ textTransform: "none" }}
         >
-          {token ? "Logout" : "Login"}
+          {TOKEN ? "Logout" : "Login"}
         </Button>
       </div>
     </div>

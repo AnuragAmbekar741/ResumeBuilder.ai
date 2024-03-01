@@ -5,17 +5,15 @@ import { useSelector } from "react-redux";
 import { UserState } from "../types/types";
 
 const Router = () => {
-  let token = useSelector(
-    (store: { user: UserState }) => store.user.user.token
-  );
-  if (!token) {
-    token = localStorage.getItem("token") || "";
-  }
-  console.log(token);
+  const user = useSelector((store: { user: UserState }) => store.user.user);
+
+  const TOKEN = user.token ? user.token : localStorage.getItem("token");
+
+  console.log(TOKEN);
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
-      <Route path="/home" element={token ? <Home /> : <Navigate to={"/"} />} />
+      <Route path="/home" element={TOKEN ? <Home /> : <Navigate to={"/"} />} />
     </Routes>
   );
 };

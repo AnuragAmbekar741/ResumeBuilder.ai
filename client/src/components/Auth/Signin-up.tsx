@@ -48,9 +48,9 @@ const Signin = () => {
         setLoading(false);
         toast.success(response.data.message);
         navigate("/home");
-        localStorage.setItem("token", response.data.token);
         const loggedUser = { email: data.email, token: response.data.token };
         dispatch(isUser(loggedUser));
+        localStorage.setItem("token", response.data.token);
       }
       if (!response.data.token) {
         toast.error(response.data.message);
