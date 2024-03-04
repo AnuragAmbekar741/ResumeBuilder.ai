@@ -16,7 +16,6 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { isUser } from "../../redux/slice/userSlice";
-
 interface FormData {
   email: string;
   password: string;
@@ -35,6 +34,25 @@ const Signin = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const googleAuth = () => {
+    window.open(`http://localhost:8080/auth/google/callback`, "_self");
+  };
+
+  // const handleGoogleCallback = async () => {
+  //   try {
+  //     // Make a GET request to the Google authentication URL
+  //     const response = await axios.get(
+  //       "http://localhost:8080/auth/google/callback"
+  //     );
+  //     // Handle the response as needed (optional)
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.error("Error initiating Google authentication:", error);
+  //     // Handle error appropriately
+  //   }
+  // };
+
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
       setLoading(true);
@@ -169,7 +187,7 @@ const Signin = () => {
             color="inherit"
             sx={{ textTransform: "none" }}
             fullWidth
-            // onClick={}
+            onClick={googleAuth}
           >
             <FaGoogle className="mr-5 text-xl" />
             Continue with Google
