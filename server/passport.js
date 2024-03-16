@@ -1,6 +1,7 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const passport = require("passport");
 const User = require("./models/user")
+const jwt = require("jsonwebtoken")
 
 passport.use(
     new GoogleStrategy(
@@ -18,6 +19,7 @@ passport.use(
                     console.log('user is: ', currentUser);
                     const token = 123;
                     done(null, currentUser, token);
+                    console.log(token)
                 } else {
                     // if not, create user in our db
                     new User({

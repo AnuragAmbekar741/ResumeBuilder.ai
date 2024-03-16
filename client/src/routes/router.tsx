@@ -9,11 +9,12 @@ const Router = () => {
 
   const TOKEN = user.token ? user.token : localStorage.getItem("token");
 
-  console.log(TOKEN);
+  // console.log(TOKEN);
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/home" element={TOKEN ? <Home /> : <Navigate to={"/"} />} />
+      {/* <Route path="/home" element={<Home />} /> */}
     </Routes>
   );
 };
