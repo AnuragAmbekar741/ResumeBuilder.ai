@@ -36,41 +36,50 @@ export default function VerticalStepper() {
     setActiveStep(0);
   };
 
+  // const handleStepClick = (step) => {
+  //   setActiveStep(step);
+  // };
+
   return (
     <Box sx={{ maxWidth: 400 }}>
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((step, index) => (
-          <Step key={step.label} className="w-[600px]">
-            <StepLabel
-              optional={index === 2}
-              sx={{
-                "& .MuiStepLabel-root .Mui-completed": {
-                  color: "red", // circle color (COMPLETED)
-                },
-              }}
-            >
-              <Typography className="my-3 text-2xl">{step.label}</Typography>
+          <Step
+            key={step.label}
+            className="w-[600px] hover:scale-110 hover:mx-3"
+            sx={{
+              "& .MuiStepLabel-root .Mui-completed": {
+                color: "#3ee743", // circle color (COMPLETED)
+              },
+              "& .MuiStepLabel-root .Mui-active": {
+                color: "#FFD800", // circle color (ACTIVE)
+              },
+            }}
+          >
+            <StepLabel optional={index === 2}>
+              <Typography className="mx-3 my-3 text-2xl font-semibold hover:scale-105">
+                {step.label}
+              </Typography>
             </StepLabel>
             <StepContent>
               <Box>
                 <Form />
-              </Box>
-              <Box sx={{ mb: 2 }}>
-                <div className="flex">
+                <div className="flex justify-between w-full">
                   <Button
                     variant="contained"
                     onClick={handleNext}
                     sx={{ mt: 1, mr: 1 }}
-                    className="w-1/2 py-2 font-semibold text-md rounded-xl bg-primary"
+                    className="w-[265px] py-2 font-semibold text-md rounded-xl bg-primary"
                   >
                     {index === steps.length - 1 ? "Finish" : "Next"}
                   </Button>
                   {index >= 1 && (
                     <Button
+                      variant="outlined"
                       disabled={index === 0}
                       onClick={handleBack}
                       sx={{ mt: 1, mr: 1 }}
-                      className="w-1/2 py-2 font-semibold text-black text-md rounded-xl hover:bg-primary hover:text-white"
+                      className="w-[265px] border-2 border-primary py-2 font-semibold text-black text-md rounded-xl hover:bg-primary hover:text-white"
                     >
                       Back
                     </Button>

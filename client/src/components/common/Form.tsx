@@ -28,30 +28,55 @@ const Form = () => {
           placeholder="First Name"
           label="First Name"
           sx={style}
-          className="w-1/2 mr-5"
+          fullWidth
+          className="mr-5"
+          InputLabelProps={{ style: { color: "black", fontSize: "14px" } }}
         />
         <TextField
           variant="outlined"
           placeholder="Last Name"
           label="Last Name"
           sx={style}
-          className="w-1/2"
+          fullWidth
+          InputLabelProps={{ style: { color: "black", fontSize: "14px" } }}
         />
       </div>
       <div className="flex mb-2">
         <TextField
           variant="outlined"
-          placeholder="Full Name"
-          label="Full Name"
-          sx={style}
-          className="w-1/2 mr-5"
-        />
-        <TextField
-          variant="outlined"
           placeholder="Email"
           label="Email"
           sx={style}
-          className="w-1/2"
+          fullWidth
+          className="mr-5"
+          InputLabelProps={{ style: { color: "black", fontSize: "14px" } }}
+        />
+        <TextField
+          variant="outlined"
+          placeholder="Phone"
+          label="Phone"
+          sx={style}
+          fullWidth
+          InputLabelProps={{ style: { color: "black", fontSize: "14px" } }}
+        />
+      </div>
+      <div className="flex mb-2">
+        <TextField
+          variant="outlined"
+          placeholder="Country"
+          label="Country"
+          sx={style}
+          className="mr-5"
+          fullWidth
+          InputLabelProps={{ style: { color: "black", fontSize: "14px" } }}
+        />
+        <TextField
+          variant="outlined"
+          placeholder="City"
+          label="City"
+          sx={style}
+          fullWidth
+          InputLabelProps={{ style: { color: "black", fontSize: "14px" } }}
         />
       </div>
     </>
