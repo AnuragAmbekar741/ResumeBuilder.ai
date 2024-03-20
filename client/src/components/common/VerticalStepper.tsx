@@ -7,8 +7,7 @@ import StepContent from "@mui/material/StepContent";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import Form from "./Form";
-
+import PersonalInformation from "./Form/PersonalInformation";
 const steps = [
   {
     label: "Personal Data",
@@ -46,6 +45,10 @@ export default function VerticalStepper() {
         {steps.map((step, index) => (
           <Step
             key={step.label}
+            onClick={(e) => {
+              e.stopPropagation();
+              setActiveStep(index);
+            }}
             className="w-[600px] hover:scale-110 hover:mx-3"
             sx={{
               "& .MuiStepLabel-root .Mui-completed": {
@@ -63,11 +66,14 @@ export default function VerticalStepper() {
             </StepLabel>
             <StepContent>
               <Box>
-                <Form />
+                <PersonalInformation />
                 <div className="flex justify-between w-full">
                   <Button
                     variant="contained"
-                    onClick={handleNext}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNext();
+                    }}
                     sx={{ mt: 1, mr: 1 }}
                     className="w-[265px] py-2 font-semibold text-md rounded-xl bg-primary"
                   >
@@ -77,7 +83,10 @@ export default function VerticalStepper() {
                     <Button
                       variant="outlined"
                       disabled={index === 0}
-                      onClick={handleBack}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleBack();
+                      }}
                       sx={{ mt: 1, mr: 1 }}
                       className="w-[265px] border-2 border-primary py-2 font-semibold text-black text-md rounded-xl hover:bg-primary hover:text-white"
                     >
