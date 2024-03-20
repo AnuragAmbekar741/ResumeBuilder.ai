@@ -19,66 +19,48 @@ export const style = {
   },
 };
 
-const Form = () => {
+interface Field {
+  label: string;
+  placeholder: string;
+  width?: string; // New property to specify width
+}
+
+interface Section {
+  label: string;
+  fields: Field[];
+}
+
+interface FormProps {
+  sections: Section[];
+}
+
+const Form: React.FC<FormProps> = ({ sections }) => {
   return (
     <>
-      <div className="flex mb-2">
-        <TextField
-          variant="outlined"
-          placeholder="First Name"
-          label="First Name"
-          sx={style}
-          fullWidth
-          className="mr-5"
-          InputLabelProps={{ style: { color: "black", fontSize: "14px" } }}
-        />
-        <TextField
-          variant="outlined"
-          placeholder="Last Name"
-          label="Last Name"
-          sx={style}
-          fullWidth
-          InputLabelProps={{ style: { color: "black", fontSize: "14px" } }}
-        />
-      </div>
-      <div className="flex mb-2">
-        <TextField
-          variant="outlined"
-          placeholder="Email"
-          label="Email"
-          sx={style}
-          fullWidth
-          className="mr-5"
-          InputLabelProps={{ style: { color: "black", fontSize: "14px" } }}
-        />
-        <TextField
-          variant="outlined"
-          placeholder="Phone"
-          label="Phone"
-          sx={style}
-          fullWidth
-          InputLabelProps={{ style: { color: "black", fontSize: "14px" } }}
-        />
-      </div>
-      <div className="flex mb-2">
-        <TextField
-          variant="outlined"
-          placeholder="Country"
-          label="Country"
-          sx={style}
-          className="mr-5"
-          fullWidth
-          InputLabelProps={{ style: { color: "black", fontSize: "14px" } }}
-        />
-        <TextField
-          variant="outlined"
-          placeholder="City"
-          label="City"
-          sx={style}
-          fullWidth
-          InputLabelProps={{ style: { color: "black", fontSize: "14px" } }}
-        />
-      </div>
+      {sections.map((section, index) => (
+        <div
+          key={index}
+          className="flex flex-wrap w-[500px] justify-evenly mb-2"
+        >
+          {section.fields.map((field, idx) => (
+            <TextField
+              key={idx}
+              variant="outlined"
+              placeholder={field.placeholder}
+              className={`${field.width ?? "w-1/2"} mb-2`}
+              label={field.label}
+              sx={style}
+              fullWidth
+              InputLabelProps={{
+                style: {
+                  color: "black",
+                  fontSize: "14px",
+                },
+              }}
+            />
+          ))}
+        </div>
+      ))}
     </>
   );
 };
