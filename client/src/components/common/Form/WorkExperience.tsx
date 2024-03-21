@@ -17,7 +17,7 @@ const WorkExperience: React.FC = () => {
     <>
       {collapse ? (
         <div className="px-3 py-5 mt-3 border rounded-md shadow-lg border-slate-50">
-          <div className="relative flex justify-start text-[#5269fa]">
+          <div className="relative flex justify-start text-[#2a96fb]">
             <div className="flex px-3 pb-5">
               {details.position || details.employer ? (
                 <>
@@ -97,7 +97,7 @@ const WorkExperience: React.FC = () => {
         </div>
       ) : (
         <div className="relative flex w-full px-5 py-3 mt-3 border rounded-lg hover:shadow-md border-slate-100 hover:bg-gradient-to-r from-slate-50">
-          <div className="flex text-[#5269fa]">
+          <div className="flex text-[#2a96fb]">
             {details.position || details.employer ? (
               <>
                 <Typography className="pt-2 text-xl font-medium">
