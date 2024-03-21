@@ -17,8 +17,11 @@ const Home = () => {
     getUser();
   }, []);
   return (
-    <div className="p-10">
-      <VerticalStepper />
+    <div className="flex w-full p-10">
+      <div className="w-1/2 h-screen overflow-scroll">
+        <VerticalStepper />
+      </div>
+      <div className="w-1/2 h-screen bg-slate-200"></div>
     </div>
   );
 };

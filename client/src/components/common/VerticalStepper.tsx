@@ -7,16 +7,36 @@ import StepContent from "@mui/material/StepContent";
 import Button from "@mui/material/Button";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
+import EditNoteIcon from "@mui/icons-material/EditNote";
 import PersonalInformation from "./Form/PersonalInformation";
+import WorkExperience from "./Form/WorkExperience";
+import Qualification from "./Form/Qualification";
+import FormRenderer from "./Form/FormRenderer";
+interface Step {
+  label: string;
+  form: React.FC; // Define form as a React component
+}
+
 const steps = [
   {
     label: "Personal Data",
+    form: PersonalInformation,
+    formLable: "",
   },
   {
-    label: "Skills and Qualifications",
+    label: "Qualifications",
+    form: Qualification,
+    formLable: "Add Education History",
   },
   {
     label: "Work experience",
+    form: WorkExperience,
+    formLable: "Add Employement History",
+  },
+  {
+    label: "Skills",
+    form: WorkExperience,
+    formLable: "Add a Skill",
   },
 ];
 
@@ -49,10 +69,10 @@ export default function VerticalStepper() {
               e.stopPropagation();
               setActiveStep(index);
             }}
-            className="w-[600px] hover:scale-110 hover:mx-3"
+            className="w-[600px]"
             sx={{
               "& .MuiStepLabel-root .Mui-completed": {
-                color: "#3ee743", // circle color (COMPLETED)
+                color: "#55ed5a", // circle color (COMPLETED)
               },
               "& .MuiStepLabel-root .Mui-active": {
                 color: "#FFD800", // circle color (ACTIVE)
@@ -60,39 +80,55 @@ export default function VerticalStepper() {
             }}
           >
             <StepLabel optional={index === 2}>
-              <Typography className="mx-3 my-3 text-2xl font-semibold hover:scale-105">
-                {step.label}
-              </Typography>
+              <div className="flex w-full group">
+                <Typography className="mx-3 my-3 text-2xl font-semibold cursor-pointer hover:scale-105">
+                  {step.label}
+                </Typography>
+                <EditNoteIcon className="hidden mt-3 text-4xl cursor-pointer text-slate-400 group-hover:grid" />
+              </div>
             </StepLabel>
             <StepContent>
               <Box>
-                <PersonalInformation />
-                <div className="flex justify-between w-full">
-                  <Button
-                    variant="contained"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleNext();
-                    }}
-                    sx={{ mt: 1, mr: 1 }}
-                    className="w-[265px] py-2 font-semibold text-md rounded-xl bg-primary"
-                  >
-                    {index === steps.length - 1 ? "Finish" : "Next"}
-                  </Button>
+                {index === 0 ? (
+                  <PersonalInformation />
+                ) : (
+                  <>
+                    <FormRenderer
+                      FormComponent={step.form}
+                      label={step.formLable}
+                    />
+                  </>
+                )}
+                <div className="flex justify-between w-full mt-7">
                   {index >= 1 && (
                     <Button
-                      variant="outlined"
-                      disabled={index === 0}
+                      variant="contained"
                       onClick={(e) => {
                         e.stopPropagation();
                         handleBack();
                       }}
                       sx={{ mt: 1, mr: 1 }}
-                      className="w-[265px] border-2 border-primary py-2 font-semibold text-black text-md rounded-xl hover:bg-primary hover:text-white"
+                      className={`${
+                        index === 0 ? "w-full ml-1" : "w-[265px]"
+                      } py-2 font-semibold text-md rounded-xl bg-primary`}
                     >
-                      Back
+                      {index === steps.length - 1 ? "Finish" : "Back"}
                     </Button>
                   )}
+                  <Button
+                    variant="outlined"
+                    // disabled={index === 0}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleNext();
+                    }}
+                    sx={{ mt: 1, mr: 1 }}
+                    className={`${
+                      index === 0 ? "w-full" : "w-[265px]"
+                    } border-2 border-primary py-2 font-semibold text-black text-md rounded-xl pt-3 hover:bg-primary hover:text-white`}
+                  >
+                    Next
+                  </Button>
                 </div>
               </Box>
             </StepContent>
