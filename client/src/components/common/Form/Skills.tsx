@@ -1,14 +1,13 @@
 import { TextField, Typography } from "@mui/material";
 import { FormStyle } from "./FormStyles";
-import PickDate from "../PickDate";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useState } from "react";
 
-const Qualification: React.FC = () => {
+const Skills: React.FC = () => {
   const [details, setDetails] = useState({
-    school: "",
-    degree: "",
+    position: "",
+    employer: "",
   });
 
   const [collapse, setCollapse] = useState(true);
@@ -16,19 +15,19 @@ const Qualification: React.FC = () => {
   return (
     <>
       {collapse ? (
-        <div className="px-3 py-5 mt-3 border rounded-md shadow-lg border-slate-50">
-          <div className="relative flex justify-start text-[#3e89de]">
+        <div className="w-full px-3 py-5 mt-3 border rounded-md shadow-lg border-slate-50">
+          <div className="relative flex justify-start text-[#308FE8]">
             <div className="flex px-3 pb-5">
-              {details.school || details.degree ? (
+              {details.position || details.employer ? (
                 <>
                   <Typography className="pt-2 text-lg font-medium">
-                    {details.degree}
+                    {details.position}
                   </Typography>
                   <Typography className="pt-2 mx-1 text-lg font-medium">
-                    {details.school
-                      ? details.degree
-                        ? `at ${details.school}`
-                        : `${details.school}`
+                    {details.employer
+                      ? details.position
+                        ? `years of experience ${details.employer}`
+                        : `${details.employer}`
                       : ""}
                   </Typography>
                 </>
@@ -38,66 +37,52 @@ const Qualification: React.FC = () => {
                 </Typography>
               )}
             </div>
-            {/* <CheckCircleOutlineIcon
+            <KeyboardArrowDownIcon
               onClick={() => setCollapse(false)}
-              className="absolute text-[1.4rem] font-bold cursor-pointer right-8 -top-[0.45rem] text-[#19d14a]"
-            /> */}
-            <CheckCircleOutlineIcon
-              onClick={() => setCollapse(false)}
-              className="absolute right-0 text-[1.65rem] cursor-pointer -top-2 text-primary"
+              className="absolute right-0 text-4xl cursor-pointer -top-3 text-slate-800"
             />
           </div>
           <div className="flex justify-center mb-2">
             <TextField
               variant="outlined"
-              placeholder="School"
-              label="School"
+              placeholder="Skill"
+              label="Skill"
               sx={FormStyle}
               fullWidth
-              className="mr-3"
+              className="w-3/5 mr-3"
               InputLabelProps={{ style: { color: "black", fontSize: "14px" } }}
               onChange={(e) =>
-                setDetails({ ...details, school: e.target.value })
+                setDetails({ ...details, position: e.target.value })
               }
-              value={details.school}
+              value={details.position}
             />
             <TextField
               variant="outlined"
-              placeholder="Degree"
-              label="Degree"
+              placeholder="Years of Experience"
+              label="Years of Experience"
               sx={FormStyle}
               fullWidth
+              className="w-2/5"
               InputLabelProps={{ style: { color: "black", fontSize: "14px" } }}
               onChange={(e) =>
-                setDetails({ ...details, degree: e.target.value })
+                setDetails({ ...details, employer: e.target.value })
               }
-              value={details.degree}
-            />
-          </div>
-          <div className="flex py-2 mb-2">
-            <PickDate label="Start Date" classes="mr-3 w-3/5" />
-            <PickDate label="End Date" classes=" mr-3 w-3/5" />
-            <TextField
-              variant="outlined"
-              placeholder="Location"
-              label="Location"
-              sx={FormStyle}
-              fullWidth
-              className="w-1/5 mt-2"
-              InputLabelProps={{ style: { color: "black", fontSize: "16px" } }}
+              value={details.employer}
             />
           </div>
         </div>
       ) : (
         <div className="relative flex w-full px-5 py-3 mt-3 border rounded-lg hover:shadow-md border-slate-100 hover:bg-gradient-to-r from-slate-50">
-          <div className="flex text-[#3e89de]">
-            {details.school || details.degree ? (
+          <div className="flex text-[#2a96fb]">
+            {details.position || details.employer ? (
               <>
                 <Typography className="pt-2 text-xl font-semibold">
-                  {details.degree}
+                  {details.position}
                 </Typography>
                 <Typography className="pt-2 mx-1 text-xl font-semibold">
-                  {details.school ? `at ${details.school}` : ""}
+                  {details.employer
+                    ? `years of experience ${details.employer}`
+                    : ""}
                 </Typography>
               </>
             ) : (
@@ -114,4 +99,4 @@ const Qualification: React.FC = () => {
   );
 };
 
-export default Qualification;
+export default Skills;

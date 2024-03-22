@@ -100,10 +100,10 @@ const WorkExperience: React.FC = () => {
           <div className="flex text-[#2a96fb]">
             {details.position || details.employer ? (
               <>
-                <Typography className="pt-2 text-xl font-medium">
+                <Typography className="pt-2 text-xl font-semibold">
                   {details.position}
                 </Typography>
-                <Typography className="pt-2 mx-1 text-xl font-medium">
+                <Typography className="pt-2 mx-1 text-xl font-semibold">
                   {details.employer ? `at ${details.employer}` : ""}
                 </Typography>
               </>
