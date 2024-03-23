@@ -1,7 +1,7 @@
 import { TextField, Typography } from "@mui/material";
 import { FormStyle } from "./FormStyles";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useState } from "react";
 
 const Skills: React.FC = () => {
