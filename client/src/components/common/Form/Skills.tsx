@@ -1,7 +1,7 @@
 import { TextField, Typography } from "@mui/material";
 import { FormStyle } from "./FormStyles";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import { useState } from "react";
 
 const Skills: React.FC = () => {
@@ -37,9 +37,9 @@ const Skills: React.FC = () => {
                 </Typography>
               )}
             </div>
-            <KeyboardArrowDownIcon
+            <CheckBoxIcon
               onClick={() => setCollapse(false)}
-              className="absolute right-0 text-4xl cursor-pointer -top-3 text-slate-800"
+              className="absolute right-0 text-3xl cursor-pointer -top-[0.4rem] text-[#19d14a] hover:scale-105"
             />
           </div>
           <div className="flex justify-center mb-2">

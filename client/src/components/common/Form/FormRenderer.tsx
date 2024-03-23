@@ -26,10 +26,12 @@ const FormRenderer: FC<FormRendererProps> = ({ FormComponent, label }) => {
     return forms.map((form, index) => (
       <div key={index} className="relative flex group">
         {form}
-        <DeleteIcon
-          className="absolute hidden text-xl top-7 right-12 group-hover:grid"
-          onClick={() => handleDeleteForm(index)}
-        />
+        <button className="p-4 hidden rounded-lg h-7 w-7 bg-slate-100 top-[1.6rem] right-12 absolute group-hover:grid">
+          <DeleteIcon
+            className="absolute text-2xl left-1 top-1"
+            onClick={() => handleDeleteForm(index)}
+          />
+        </button>
       </div>
     ));
   };
@@ -42,7 +44,7 @@ const FormRenderer: FC<FormRendererProps> = ({ FormComponent, label }) => {
         className="flex justify-between px-5 py-3 mt-5 border rounded-lg cursor-pointer hover:shadow-md border-slate-100 hover:bg-gradient-to-r from-slate-50 "
       >
         <Typography className="text-lg text-[#2a96fb]">{label}</Typography>
-        <AddCircleIcon className="-mr-2 text-2xl text-gray-500" />
+        <AddCircleIcon className="-mr-2 text-2xl text-gray-400" />
       </div>
     </div>
   );

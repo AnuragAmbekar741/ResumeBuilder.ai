@@ -2,7 +2,7 @@ import { TextField, Typography } from "@mui/material";
 import { FormStyle } from "./FormStyles";
 import PickDate from "../PickDate";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import { useState } from "react";
 
 const Qualification: React.FC = () => {
@@ -42,9 +42,9 @@ const Qualification: React.FC = () => {
               onClick={() => setCollapse(false)}
               className="absolute text-[1.4rem] font-bold cursor-pointer right-8 -top-[0.45rem] text-[#19d14a]"
             /> */}
-            <CheckCircleOutlineIcon
+            <CheckBoxIcon
               onClick={() => setCollapse(false)}
-              className="absolute right-0 text-[1.65rem] cursor-pointer -top-2 text-primary"
+              className="absolute right-0 text-3xl cursor-pointer -top-[0.4rem] text-[#19d14a] hover:scale-105"
             />
           </div>
           <div className="flex justify-center mb-2">
