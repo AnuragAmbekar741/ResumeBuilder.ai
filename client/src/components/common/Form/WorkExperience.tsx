@@ -1,7 +1,7 @@
 import { TextField, Typography } from "@mui/material";
 import { FormStyle } from "./FormStyles";
 import PickDate from "../PickDate";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import DoneIcon from "@mui/icons-material/Done";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useState } from "react";
 
@@ -38,10 +38,12 @@ const WorkExperience: React.FC = () => {
                 </Typography>
               )}
             </div>
-            <CheckBoxIcon
-              onClick={() => setCollapse(false)}
-              className="absolute right-0 text-3xl cursor-pointer -top-[0.4rem] text-[#19d14a] hover:scale-105"
-            />
+            <button className="right-0 absolute cursor-pointer bg-slate-100 -top-[0.4rem] rounded-lg p-2">
+              <DoneIcon
+                onClick={() => setCollapse(false)}
+                className="text-[1.4rem] text-black"
+              />
+            </button>
           </div>
           <div className="flex justify-center mb-2">
             <TextField

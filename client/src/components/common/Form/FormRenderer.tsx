@@ -26,9 +26,9 @@ const FormRenderer: FC<FormRendererProps> = ({ FormComponent, label }) => {
     return forms.map((form, index) => (
       <div key={index} className="relative flex group">
         {form}
-        <button className="p-4 hidden rounded-lg h-7 w-7 bg-slate-100 top-[1.6rem] right-12 absolute group-hover:grid">
+        <button className="p-[1.3rem] hidden rounded-lg h-7 w-7 bg-slate-100 top-[1.6rem] right-16 absolute group-hover:grid">
           <DeleteIcon
-            className="absolute text-2xl left-1 top-1"
+            className="absolute text-2xl left-[0.6rem] top-[0.6rem]"
             onClick={() => handleDeleteForm(index)}
           />
         </button>

@@ -6,7 +6,7 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import StepContent from "@mui/material/StepContent";
 import Button from "@mui/material/Button";
-import Paper from "@mui/material/Paper";
+// import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import PersonalInformation from "./Form/PersonalInformation";
@@ -53,9 +53,9 @@ export default function VerticalStepper() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+  // const handleReset = () => {
+  //   setActiveStep(0);
+  // };
 
   // const handleStepClick = (step) => {
   //   setActiveStep(step);
@@ -146,14 +146,14 @@ export default function VerticalStepper() {
             </Step>
           ))}
         </Stepper>
-        {activeStep === steps.length && (
+        {/* {activeStep === steps.length && (
           <Paper square elevation={0} sx={{ p: 3 }}>
             <Typography>All steps completed - you&apos;re finished</Typography>
             <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
               Reset
             </Button>
           </Paper>
-        )}
+        )} */}
       </Box>
     </>
   );
