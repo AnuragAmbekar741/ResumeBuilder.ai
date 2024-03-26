@@ -9,6 +9,9 @@ const WorkExperience: React.FC = () => {
   const [details, setDetails] = useState({
     position: "",
     employer: "",
+    start: "",
+    end: "",
+    description: "",
   });
 
   const [collapse, setCollapse] = useState(true);
