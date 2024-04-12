@@ -6,9 +6,15 @@ import DoneIcon from "@mui/icons-material/Done";
 import { useState } from "react";
 
 const Qualification: React.FC = () => {
+  const [startDate, setStartDate] = useState<string>("");
+
+  const [endDate, setEndDate] = useState<string>("");
+
   const [details, setDetails] = useState({
     school: "",
     degree: "",
+    startDate: startDate,
+    endDate: endDate,
   });
 
   const [collapse, setCollapse] = useState(true);
@@ -73,8 +79,16 @@ const Qualification: React.FC = () => {
             />
           </div>
           <div className="flex py-2 mb-2">
-            <PickDate label="Start Date" classes="mr-3 w-3/5" />
-            <PickDate label="End Date" classes=" mr-3 w-3/5" />
+            <PickDate
+              setDate={setStartDate}
+              label="Start Date"
+              classes="mr-3 w-3/5"
+            />
+            <PickDate
+              setDate={setEndDate}
+              label="End Date"
+              classes=" mr-3 w-3/5"
+            />
             <TextField
               variant="outlined"
               placeholder="Location"

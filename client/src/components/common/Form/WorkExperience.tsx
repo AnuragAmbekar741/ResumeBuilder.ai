@@ -3,18 +3,30 @@ import { FormStyle } from "./FormStyles";
 import PickDate from "../PickDate";
 import DoneIcon from "@mui/icons-material/Done";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const WorkExperience: React.FC = () => {
+  const [startDate, setStartDate] = useState<string>("");
+  const [endDate, setEndDate] = useState<string>("");
+
   const [details, setDetails] = useState({
     position: "",
     employer: "",
-    start: "",
-    end: "",
+    start: startDate,
+    end: endDate,
     description: "",
   });
 
   const [collapse, setCollapse] = useState(true);
+
+  useEffect(
+    () => setDetails({ ...details, start: startDate, end: endDate }),
+    [startDate, endDate]
+  );
+
+  const handleClick = () => {
+    console.log(details);
+  };
 
   return (
     <>
@@ -43,7 +55,10 @@ const WorkExperience: React.FC = () => {
             </div>
             <button className="right-0 absolute cursor-pointer bg-slate-100 -top-[0.4rem] rounded-lg p-2">
               <DoneIcon
-                onClick={() => setCollapse(false)}
+                onClick={() => {
+                  setCollapse(false);
+                  handleClick();
+                }}
                 className="text-[1.4rem] text-black"
               />
             </button>
@@ -76,8 +91,16 @@ const WorkExperience: React.FC = () => {
             />
           </div>
           <div className="flex py-2 mb-2">
-            <PickDate label="Start Date" classes="mr-3 w-3/5" />
-            <PickDate label="End Date" classes=" mr-3 w-3/5" />
+            <PickDate
+              setDate={setStartDate}
+              label="Start Date"
+              classes="mr-3 w-3/5"
+            />
+            <PickDate
+              setDate={setEndDate}
+              label="End Date"
+              classes=" mr-3 w-3/5"
+            />
             <TextField
               variant="outlined"
               placeholder="Location"
